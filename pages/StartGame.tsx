@@ -1,7 +1,7 @@
-import { Image, View, StyleSheet, Text, Button } from "react-native";
+import React from "react";
+import { Image, View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import Avatar from "../components/Avatar";
 import { StatusBar } from "expo-status-bar";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import { FaEdit } from "react-icons/fa";
 import { IoDiamond } from "react-icons/io5";
 
@@ -26,15 +26,26 @@ const StartGame = () => {
       <Image style={styles.logo1} source={require("../assets/logo1.png")} />
 
       <StatusBar style="auto" />
-      <View>
+
+//set diamond
+      <View style={styles.diamondContainer}>
+        <TouchableOpacity style={styles.diamondButton}>
+          <Text style={styles.diamondText}>20</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity>
+          <Image
+            style={styles.vectordiamond}
+            source={require("../assets/adddiamondpng.png")}
+          />
+        </TouchableOpacity>
+
         <Image
           style={styles.diamond}
           source={require("../assets/diamond.png")}
         />
-        <TouchableOpacity style={styles.diamondButton}>
-        <Text style={styles.diamondText}>20</Text>
-      </TouchableOpacity>
       </View>
+
       <View>
         <Image
           style={styles.avatar}
@@ -43,9 +54,11 @@ const StartGame = () => {
         <FaEdit style={styles.edit} />
         <Text style={styles.textup}>Select Your Avatar</Text>
       </View>
+
       <TouchableOpacity style={styles.button}>
         <Text style={styles.text}>Play Game</Text>
       </TouchableOpacity>
+
       <Image style={styles.artist} source={require("../assets/artist.png")} />
     </View>
   );
@@ -72,6 +85,45 @@ const styles = StyleSheet.create({
     marginTop: -280,
     marginRight: 200,
   },
+
+  //set diamond start
+  diamondContainer: {
+    position: "absolute",
+    top: 20,
+    marginLeft: 280,
+  },
+  vectordiamond: {
+    width: 30,
+    height: 30,
+    top: -21,
+    marginLeft: 65,
+  },
+  diamond: {
+    width: 25,
+    height: 25,
+    top: -53,
+    marginLeft: -5,
+  },
+  diamondButton: {
+    backgroundColor: "#000000",
+    padding: 10,
+    width: 80,
+    height: 15,
+    borderRadius: 17,
+    marginTop: 10,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    color: "white",
+  },
+  diamondText: {
+    color: "white",
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 14,
+  },
+
+  //set diamond end
   textup: {
     fontSize: 20,
     marginBottom: 10,
@@ -120,40 +172,10 @@ const styles = StyleSheet.create({
     height: 30,
     color: "white",
   },
-
   artist: {
     position: "absolute",
     width: 430,
     height: 190,
     marginTop: "132%",
   },
-  diamond: {
-    position: "absolute",
-    width: 30,
-    height: 30,
-    marginTop: -80,
-    marginRight: 300,
-  },
-  diamondButton: {
-    backgroundColor: "#000000",
-    padding: 10,
-    width: 120,
-    height: 35,
-    borderRadius: 17,
-    marginTop: 17,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    color: "white",
-    position: "relative",
-  },
-  diamondText: {
-    color: "white",
-    textAlign: "center",
-    fontWeight: "bold",
-    fontSize: 20,
-    alignItems: "center",
-    // marginLeft: 10,
-    alignContent: "center",
-  }
 });
